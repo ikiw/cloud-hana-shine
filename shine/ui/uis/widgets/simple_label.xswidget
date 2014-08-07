@@ -1,0 +1,6 @@
+{
+"name" : "Simple Label",
+"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/simple_label.xml" ,
+"description": "",
+"icon" : ""
+}

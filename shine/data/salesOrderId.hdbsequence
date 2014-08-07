@@ -1,8 +1,8 @@
-schema= "<SCHEMA_NAME>";
-start_with= 1400000000;
-maxvalue= 1499999999;
+schema= "_SYS_BIC";
+start_with= 0500001029;
+maxvalue= 0599999999;
 nomaxvalue=false;
 minvalue= 1;
 nominvalue=true;
 cycles= false;
-depends_on_table= "<PACKAGE_NAME>.data::salesOrder";
+depends_on_table= "{{PACKAGE_NAME}}.data::EPM.Sales.Header"; 

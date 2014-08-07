@@ -1,0 +1,66 @@
+DO_NOT_SHOW=Do not show this again
+TITLE=SHINE (SAP HANA Interactive Education)
+OK_BUTTON=OK
+INTRODUCTION=Introduction
+WHATS_NEW=What's New
+TILE_HELP_PROMPT=Clicking on each tile will bring up the help for that module.
+CHECK_PRE=Check Prerequisites
+DG=Data Generator
+POWLIST=Purchase Order Worklist
+SALES_DASH=Sales Dashboard
+SOWLIST=Sales Worklist
+USER=User CRUD
+HANA_UIS_BLUE=HANA UI Integration Services - Blue Crystal Theme
+HANA_UIS_GOLD=HANA UI Integration Services - Gold Reflection Theme
+BUSINESS_SCENARIO=Business Scenario
+MAJOR_TABLES=Major database Tables/Views
+UI_FOLDER=UI Folder path
+PERMISSIONS=Permissions required
+CONTINUE=Continue
+
+SHINE_INTRO=SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build native SAP HANA applications. The demo application, delivered with SAP HANA in a special delivery unit(DU), comes complete with sample data and design-time developer objects for the application's database tables, data views, stored procedures, OData, and user interface.
+SHINE_WHATS_NEW=<ul><li>Fiori like Launch Pad</li><li>Multiple line item create of Sales Orders</li><li>Delete Sales Order</li><li>Separate Application link for SO Work list</li><li>Log off feature for Purchase and Sales work list</li><li>Time Based Data Generator for PO and SO ( involved xsjs code)</li></ul>
+
+TILE_DESC_DG=<div>The demo application defines a set of tables, along with a basic set of initial data that comes in a set of CSV files. For example, the sales orders table begins with 1,000 records. This application provides the tools for generating additional sales and purchase order records, as well as reloading the master data tables.</div>
+TILE_DESC_PO=<div>This UI illustrates a comprehensive Purchase Order Worklist where there are several tabs based on the OData model constructed in the demo content. There is a list of Purchase Orders and upon selection of a particular order, the general data and Purchase Order items are listed in separate tabs.</div>
+TILE_DESC_SO=<div>This UI illustrates a Sales Order Worklist where you can create and delete Sales Orders.</br><ul><li>The Details tab provides a type of PO Worklist where all the Sales Orders are listed.</li><li>By selecting a Sales Order, you can view its details.</li><li>This tab also provides a feature for creating Sales Orders using XSJS.</li></ul></div>
+TILE_DESC_SD=<div>This UI illustrates a comprehensive dashboard concept for a Sales Manager that contains several charts based on the OData models constructed in the demo content.</br><ul><li>The Overview tab contains all the sales specific charts based on Region/Country/Discount per region.</li><li>The Product Reports tab contains charts that provide sales information categorized by product.</li><li>The Details tab provides a type of PO Worklist where all the Sales Orders are listed.</li><li>By selecting a Sales Order, you can view its details.</li><li>This tab also provides a feature for creating Sales Orders using XSJS.</li></ul></div>
+TILE_DESC_US=<div>The userCRUD ( Create Read Update Delete) folder contains a simple model and UI demonstrating creation and update of data.</br><ul><li>Here in this screen, a User record can be created as well as updated in the table.</li><li>You can perform an update by modifying the First Name, Last Name, and/or Email fields that already exist in the table.</li></ul></div>
+TILE_DESC_UIS_BLUE=<div>SAP HANA UI integration services act as a container for mini web pages. Rather than developing an entire site with dependencies between the various components, you develop small chunks of functions called widgets. Widgets are added in an application site container where they are consumed to build your final web site.</br></br>This UI Shows the Blue Crystal Runtime of the Site.</div>
+TILE_DESC_UIS_GOLD=<div>SAP HANA UI integration services act as a container for mini web pages. Rather than developing an entire site with dependencies between the various components, you develop small chunks of functions called widgets. Widgets are added in an application site container where they are consumed to build your final web site.</br></br>This UI Shows the Gold Reflection Runtime of the Site.</div>
+
+TILE_BUSI_SCEN_SD=As the Sales head of a company which deals in buying and selling IT equipments all over the world via e-commerce, I would like to have some Sales Analytics (Graphical representation) by which i can figure out the sales per region after orders have been executed. This  would help me in optimizing my sales strategy and enable me to make better sales decisions.
+
+TILE_DB_VIEWS_DG=<div>All Master Data Tables , Purchase and Sales tables.</div>
+TILE_DB_VIEWS_PO=<ul><li>EPM.Purchase.Header</li><li>EPM.Purchase.Item</li><li>AN_PURCHASE_Overview.analyticview</li><ul>
+TILE_DB_VIEWS_SO=<ul><li>EPM.Sales.Header</li><li>EPM.Sales.Item</li><li>AT_SALES_ORDER_WORKLIST.attributeview</li><ul>
+TILE_DB_VIEWS_SD=<ul><li>EPM.Sales.Header</li><li>EPM.Sales.Item</li><li>AN_SALES_ORDER_RANKING.analyticview</li><li>CV_SALES_YEAR_COMPARISON.calculationview</li><li>CV_SALES_ORDER_RANKING*.calculationview</li><ul>
+TILE_DB_VIEWS_US=<div>EPM.User.Details</div>
+TILE_DB_VIEWS_UIS_BLUE=<ul><li>EPM.Purchase.Header</li><li>EPM.Purchase.Item</li><li>AN_PURCHASE_Overview.analyticview</li><ul>
+TILE_DB_VIEWS_UIS_GOLD=<ul><li>EPM.Purchase.Header</li><li>EPM.Purchase.Item</li><li>AN_PURCHASE_Overview.analyticview</li><ul>
+
+TILE_UI_FOLDER_DG=/{{PACKAGE_NAME}}/admin/ui/
+TILE_UI_FOLDER_PO=/{{PACKAGE_NAME}}/ui/poworklist/
+TILE_UI_FOLDER_SO=/{{PACKAGE_NAME}}/ui/salesDashboard/
+TILE_UI_FOLDER_SD=/{{PACKAGE_NAME}}/ui/salesDashboard/
+TILE_UI_FOLDER_US=/{{PACKAGE_NAME}}/ui/userCRUD/
+TILE_UI_FOLDER_UIS_BLUE=/{{PACKAGE_NAME}}/ui/uis/site/UISExample/
+TILE_UI_FOLDER_UIS_GOLD=/{{PACKAGE_NAME}}/ui/uis/site/UISExample/
+
+TILE_PERMS_DG=User should have Admin.Hdbrole to access this Application, Time Data has to be generated.
+TILE_PERMS_PO=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.
+TILE_PERMS_SO=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.
+TILE_PERMS_SD=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.
+TILE_PERMS_US=User should have User.hdbrole.
+TILE_PERMS_UIS_BLUE=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator. We need sap.hana.uis.db::SITE_DESIGNER & sap.hana.uis.db::SITE_USER with sap.hana.uis.privileges::AppSiteAccess-All ( Application Privilege) to access the Site. ( these are already added as part of User.Hdbrole)
+TILE_PERMS_UIS_GOLD=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator. We need sap.hana.uis.db::SITE_DESIGNER & sap.hana.uis.db::SITE_USER with sap.hana.uis.privileges::AppSiteAccess-All ( Application Privilege) to access the Site. ( these are already added as part of User.Hdbrole)
+
+CHECKING_PRE=Checking Prerequisites
+PRE_PROMPT=Please check Section 4 of this guide for the complete list of prerequisites.
+PDF_LINK=http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf
+LINK_PROMPT=Getting started guide
+USER_ROLE_PRESENT=User role status
+ADMIN_ROLE_PRESENT=Admin role status
+ANALYTIC_PRIVILEGE=Analytic privileges for models
+TIME_DATA_GENERATED=Time data generated
+CANT_CHECK=Not able to check the prerequisites

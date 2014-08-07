@@ -15,7 +15,7 @@ SAP HANA Interactive Education, or SHINE, is a demo application that makes it ea
 ## Add HANA System
 
 In the `SAP HANA Development` perspective go to `Systems` tab, right click and choose `Add cloud System`. A detailed description can be found at [Connecting to a Productive SAP HANA Instance via the Eclipse IDE](https://help.hana.ondemand.com/help/frameset.htm?4efc124a0ccc42b3b502ad3a3908d23d.html).
-This SHINE application is SPS6 version. It will be imported in the specified SAP HANA schema and Repository package.
+This SHINE application is SP08 version. It will be imported in the specified SAP HANA schema and Repository package.
 
 ## Create a package
 Create a package with name <kbd>shine</kbd>. A detailed description can found be at **TODO**

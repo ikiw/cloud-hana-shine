@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<title>SHINE</title>
+		
+		<style>
+		.sapMStdTileInfo{
+			color: #007cc0;
+		}
+		#__tile4-info{
+			white-space: normal !important;
+			margin-top: 1rem !important;
+		}
+		#__tile5-info{
+			white-space: normal !important;
+			margin-top: 1rem !important;
+		}
+		.templateTileClass{
+			background-size: 192px;
+			background-repeat: no-repeat;
+			background-position: center;		
+		}
+		.dgClass{
+			background-image: url('./thumbnails/dg.png');
+		}
+		.poClass{
+			background-image: url('./thumbnails/poworklist.png');
+		}
+		.soClass{
+			background-image: url('./thumbnails/sales.png');
+		}
+		.sowClass{
+			background-image: url('./thumbnails/salesWorklist.png');
+		}		
+		.ucClass{
+			background-image: url('./thumbnails/userCRUD.png');
+		}
+		.uisbClass{
+			background-image: url('./thumbnails/uis1.png');
+		}
+		.uisgClass{
+			background-image: url('./thumbnails/uis.png');
+		}						
+		</style>
+		
+ 		<script src="/sap/ui5/1/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m,sap.me"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+
+		<script>
+				
+				var app = new sap.m.App({initialPage:"home"});
+				
+				var adminTile = new sap.m.StandardTile({
+					icon : "sap-icon://database",
+					// number : "89",
+					//title : 'Data Generator',
+					//type : "Monitor",
+					removable : false,
+					press : function(oEvent) {
+						window.location = '/{{PACKAGE_NAME}}/admin/admin.html';
+					},
+				    info : "Data Generator",
+				    infoState : "None"
+				});
+				adminTile.addStyleClass('templateTileClass');
+				adminTile.addStyleClass('dgClass');
+		
+				var poTile = new sap.m.StandardTile({
+					icon : "sap-icon://my-sales-order",
+					// type : "Monitor",
+					//number : "2",
+					//numberUnit : "Dec",
+					//title : 'Purchase Order Worklist',
+					info : "Purchase Order Worklist",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+						window.location = '/{{PACKAGE_NAME}}/ui/poworklist/poWorklist.html';
+					}
+				});
+				poTile.addStyleClass('templateTileClass');
+				poTile.addStyleClass('poClass');
+		
+				var soTile = new sap.m.StandardTile({
+					// type : "Create",
+					icon : "sap-icon://sales-order",
+					//title : 'Sales Dashboard',
+					//number : "8.45",
+					//numberUnit : "CGPA",
+					info : "Sales Dashboard",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+							window.location = '/{{PACKAGE_NAME}}/ui/salesDashboard/index.html';					
+					}
+				});
+				soTile.addStyleClass('templateTileClass');
+				soTile.addStyleClass('soClass');
+		
+				var sowTile = new sap.m.StandardTile({
+					// type : "Create",
+					icon : "sap-icon://sales-order",
+					//title : 'Sales Dashboard',
+					//number : "8.45",
+					//numberUnit : "CGPA",
+					info : "Sales Worklist",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+							window.location = '/{{PACKAGE_NAME}}/ui/salesDashboard/soWorklist.html';					
+					}
+				});
+				sowTile.addStyleClass('templateTileClass');
+				sowTile.addStyleClass('sowClass');
+				
+				var userTile = new sap.m.StandardTile({
+					icon : "sap-icon://account",
+					//number : "1",
+					//numberUnit : "NEW",
+					//title : 'User CRUD',
+					info : "User CRUD",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+							window.location = '/{{PACKAGE_NAME}}/ui/userCRUD/index.html';					
+					}
+				});
+				userTile.addStyleClass('templateTileClass');
+				userTile.addStyleClass('ucClass');
+
+				var uisBlueTile = new sap.m.StandardTile({
+					icon : "sap-icon://widgets",
+					//number : "1",
+					//numberUnit : "NEW",
+					//title : 'HANA UI Integration Services',
+					info : "HANA UI Integration Services - Blue Crystal Theme",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+						window.location = '/i053959sapdev/uis/clients/ushell-app/shells/hana/shell.html#appsite-display~ctx?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample';						
+					}
+				});
+				uisBlueTile.addStyleClass('templateTileClass');
+				uisBlueTile.addStyleClass('uisbClass');
+				
+				var uisGoldTile = new sap.m.StandardTile({
+					icon : "sap-icon://widgets",
+					//number : "1",
+					//numberUnit : "NEW",
+					//title : 'HANA UI Integration Services',
+					info : "HANA UI Integration Services - Gold Reflection Theme",
+					infoState : "None",
+					removable : false,
+					press : function(oEvent) {
+						window.location = '/i053959sapdev/uis/clients/desktop/applications/uis/runtime.html?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample#context/eyJjdHhSb3V0ZUlkIjoiMTM4MzA1MTUzODI3MiIsImNvbnRleHRNYXAiOnt9fQ==';						
+					}
+				});		
+				uisGoldTile.addStyleClass('templateTileClass');
+				uisGoldTile.addStyleClass('uisgClass');		
+				
+		var items = [ adminTile, poTile, soTile, sowTile,
+			          userTile, uisBlueTile, uisGoldTile,
+			          ];
+		
+
+		// create tile container
+		var tileContainer = new sap.m.TileContainer({
+			tileDelete : function(evt) {
+				var tile = evt.getParameter("tile");
+				evt.getSource().removeTile(tile);
+			},
+			tiles : items
+		});
+
+		var titleLabel = new sap.m.Label({
+			design : sap.m.LabelDesign.Bold,
+			text : 'SHINE (SAP HANA Interactive Education)',
+		});
+
+		var page = new sap.m.Page("home", {
+			// title: "Home",
+			icon : 'images/sap_uex_sign_big.png',
+			customHeader : new sap.m.Bar({
+				// enableFlexBox: true,
+				contentMiddle : [ new sap.m.Image({
+					height : '26px',
+					src : 'images/sap_uex_sign_big.png',
+				}),
+				// label
+				titleLabel ]
+			}),
+			content : [ tileContainer ],
+			enableScrolling : false
+		})
+				
+				app.addPage(page);
+				app.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

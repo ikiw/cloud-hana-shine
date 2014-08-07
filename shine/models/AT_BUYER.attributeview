@@ -2,80 +2,84 @@
 <Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_BUYER" defaultClient="000" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
   <origin/>
   <descriptions defaultDescription="AT_BUYER"/>
-  <metadata changedAt="2012-12-05 19:58:10.489" createdAt="2012-12-05 19:58:07.269"/>
+  <metadata changedAt="2013-10-01 14:29:03.056" createdAt="2013-10-01 14:29:03.056"/>
   <defaultSchema/>
   <attributes>
-    <attribute id="City" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="City"/>
+    <attribute id="CITY">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="CITY"/>
     </attribute>
-    <attribute id="PostalCode" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="PostalCode"/>
+    <attribute id="POSTALCODE">
+      <descriptions defaultDescription="POSTALCODE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="POSTALCODE"/>
     </attribute>
-    <attribute id="Street" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="Street"/>
+    <attribute id="STREET">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="STREET"/>
     </attribute>
-    <attribute id="Country" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="Country"/>
+    <attribute id="BUILDING">
+      <descriptions defaultDescription="BUILDING"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="BUILDING"/>
     </attribute>
-    <attribute id="Building" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="Building"/>
+    <attribute id="COUNTRY">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="COUNTRY"/>
     </attribute>
-    <attribute id="PartnerId" hidden="false" displayAttribute="false" key="true">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner" columnName="PartnerId"/>
+    <attribute id="PARTNERID" key="true">
+      <descriptions defaultDescription="PARTNERID"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="PARTNERID"/>
     </attribute>
-    <attribute id="EmailAddress" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner" columnName="EmailAddress"/>
+    <attribute id="EMAILADDRESS">
+      <descriptions defaultDescription="EMAILADDRESS"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="EMAILADDRESS"/>
     </attribute>
-    <attribute id="CompanyName" hidden="false" displayAttribute="false">
-      <descriptions/>
-      <searchProperties/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner" columnName="CompanyName"/>
+    <attribute id="COMPANYNAME">
+      <descriptions defaultDescription="COMPANYNAME"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="COMPANYNAME"/>
+    </attribute>
+    <attribute id="REGION">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="REGION"/>
+    </attribute>
+    <attribute id="PARTNERROLE">
+      <descriptions defaultDescription="PARTNERROLE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="PARTNERROLE"/>
+    </attribute>
+    <attribute id="LEGALFORM">
+      <descriptions defaultDescription="LEGALFORM"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="LEGALFORM"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <privateDataFoundation>
     <tableProxies>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses"/>
       </tableProxy>
     </tableProxies>
     <joins>
       <join>
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses"/>
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner"/>
         <leftColumns>
-          <columnName>AddressId</columnName>
+          <columnName>ADDRESSID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>AddressId</columnName>
+          <columnName>ADDRESSID</columnName>
         </rightColumns>
-        <properties cardinality="C1_1" joinOperator="Equal" joinType="inner"/>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="referential"/>
       </join>
     </joins>
     <layout>
       <shapes>
-        <shape modelObjectName="<PACKAGE_NAME>.data::addresses" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="8" y="53"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="537" y="95"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::businessPartner" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="643" y="36"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="6" y="37"/>
         </shape>
       </shapes>
     </layout>

@@ -1,0 +1,64 @@
+<Module>
+  <ModulePrefs title="Sample">
+     <Require feature="gadgetprefs"/>
+  </ModulePrefs>
+  
+  <UserPref name="Button Name" default_value="Hello World"/>
+  
+  <Content type="html" >
+  
+ <![CDATA[
+
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+        
+        
+		<html>
+		<head>
+		
+		 <script language="javascript" type="text/javascript">
+                     var gadgetPrefs = new gadgets.GadgetPrefs();
+                window.onload = initiateGadgetProps;
+                function initiateGadgetProps() {
+                    SetNewButton();
+                 
+               }
+                
+	                function setButton() {
+                    var wantedbutton = document.getElementById('Button Name').value;
+                    gadgetPrefs.setPreference('Button Name', wantedbutton, gadgetCallback);
+                    SetNewButton();
+                }
+                function SetNewButton() {
+                    var currentButton = gadgetPrefs.getString("Button Name");
+                    document.getElementById('btn').text = wantedbutton;
+                }
+                     </script>
+                     
+                     
+		<title>Hello World</title>
+		<script id="sap-ui-bootstrap" type="text/javascript"
+			src="/sap/ui5/1/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.ui.ux3,sap.ui.commons"
+			data-sap-ui-theme="sap_goldreflection">
+		
+		</script>
+
+
+		<script type="text/javascript">
+			var myButton = new sap.ui.commons.Button("btn");
+			var Currentbutton = gadgetPrefs.getString("Button Name");
+			myButton.setText(Currentbutton);
+			myButton.attachPress(function(){$("#btn").fadeOut();});
+			myButton.placeAt("content");
+		</script>
+		
+		</head>
+		
+		<body class="sapUiBody" role="application">
+			<div id="content"></div>
+		</body>
+		</html>
+	]]>
+  </Content>
+</Module>

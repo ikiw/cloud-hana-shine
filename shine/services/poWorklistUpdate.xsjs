@@ -1,9 +1,10 @@
-$.import("<PACKAGE_NAME>.services", "messages");
-var MESSAGES = $.<PACKAGE_NAME>.services.messages;
+$.import("{{PACKAGE_NAME}}.services", "messages");
+var MESSAGES = $.{{PACKAGE_NAME}}.services.messages; 
+
 
 function deletePO() {
 	var body = '';
-	var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+	var purchaseOrderID = $.request.parameters.get('PURCHASEORDERID');
 	if (purchaseOrderID === null) {
 		$.response.status = $.net.http.BAD_REQUEST;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '012'));
@@ -14,12 +15,11 @@ function deletePO() {
 	var pstmt;
 	var rs;
 	var query;
-	var list = [];
 
 	try {
 		// Read Current Status for PO
-		query = "SELECT \"LifecycleStatus\", \"ApprovalStatus\", \"ConfirmStatus\", \"OrderingStatus\", \"InvoicingStatus\" "
-				+ "from \"<PACKAGE_NAME>.data::purchaseOrder\" where \"PurchaseOrderId\" = ?";
+		query = 'SELECT LIFECYCLESTATUS, APPROVALSTATUS, CONFIRMSTATUS, ORDERINGSTATUS, INVOICINGSTATUS '
+				+ 'from "{{PACKAGE_NAME}}.data::EPM.Purchase.Header" where PURCHASEORDERID = ?';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, purchaseOrderID);
 		rs = pstmt.executeQuery();
@@ -32,7 +32,7 @@ function deletePO() {
 	if (!rs.next()) {
 		$.response.status = $.net.http.BAD_REQUEST;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '013',
-				purchaseOrderID)); // Invalid purchase order number specified
+				encodeURI(purchaseOrderID))); // Invalid purchase order number specified
 		return;
 	}
 
@@ -53,7 +53,7 @@ function deletePO() {
 	if (rs.getNString(1) === "X") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '015',
-				purchaseOrderID)); // Purchase Order &1 has already been
+				encodeURI(purchaseOrderID))); // Purchase Order &1 has already been
 		// deleted
 		return;
 	}
@@ -135,7 +135,7 @@ function deletePO() {
 
 	try {
 		// Update Purchase Order Status in order to delete it
-		query = "UPDATE \"<PACKAGE_NAME>.data::purchaseOrder\" set \"LifecycleStatus\" = 'X' where \"PurchaseOrderId\" = ?";
+		query = "UPDATE \"{{PACKAGE_NAME}}.data::EPM.Purchase.Header\" set LIFECYCLESTATUS = 'X' where PURCHASEORDERID = ?";
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, purchaseOrderID);
 		var iRows = pstmt.executeUpdate();
@@ -153,14 +153,13 @@ function deletePO() {
 	$.trace.debug(body);
 	$.response.contentType = 'application/text';
 	$.response.setBody(body);
-	$.response.headers.set('access-control-allow-origin', '*');
 	$.response.status = $.net.http.OK;
 
 }
 
 function approvePO() {
 	var body = '';
-	var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+	var purchaseOrderID = $.request.parameters.get('PURCHASEORDERID');
 	if (purchaseOrderID === null) {
 		$.response.status = $.net.http.BAD_REQUEST;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '012')); // No
@@ -187,7 +186,7 @@ function approvePO() {
 		break;
 	default:
 		$.response.status = $.net.http.BAD_REQUEST;
-		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '023', action)); // Action
+		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '023', encodeURI(action))); // Action
 		// &1
 		// is
 		// an
@@ -199,12 +198,11 @@ function approvePO() {
 	var pstmt;
 	var rs;
 	var query;
-	var list = [];
 
 	try {
 		// Read Current Status for PO
-		query = "SELECT \"LifecycleStatus\", \"ApprovalStatus\", \"ConfirmStatus\", \"OrderingStatus\", \"InvoicingStatus\" "
-				+ "FROM \"<PACKAGE_NAME>.data::purchaseOrder\" WHERE \"PurchaseOrderId\" = ?";
+		query = 'SELECT LIFECYCLESTATUS, APPROVALSTATUS, CONFIRMSTATUS, ORDERINGSTATUS, INVOICINGSTATUS '
+			+ 'from "{{PACKAGE_NAME}}.data::EPM.Purchase.Header" where PURCHASEORDERID = ?';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, purchaseOrderID);
 		rs = pstmt.executeQuery();
@@ -217,7 +215,7 @@ function approvePO() {
 	if (!rs.next()) {
 		$.response.status = $.net.http.BAD_REQUEST;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '013',
-				purchaseOrderID)); // Invalid purchase order number specified
+				encodeURI(purchaseOrderID))); // Invalid purchase order number specified
 		return;
 	}
 
@@ -225,14 +223,14 @@ function approvePO() {
 	if (rs.getNString(1) === "C") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '024')); // Closed
-		// purchase
-		// orders
-		// can
-		// not
-		// be
-		// accepted
-		// or
-		// rejected
+																		// purchase
+																		// orders
+																		// can
+																		// not
+																		// be
+																		// accepted
+																		// or
+																		// rejected
 		return;
 	}
 
@@ -240,14 +238,14 @@ function approvePO() {
 	if (rs.getNString(1) === "X") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '025')); // Deleted
-		// purchase
-		// orders
-		// can
-		// not
-		// be
-		// accepted
-		// or
-		// rejected
+																		// purchase
+																		// orders
+																		// can
+																		// not
+																		// be
+																		// accepted
+																		// or
+																		// rejected
 		return;
 	}
 
@@ -255,12 +253,12 @@ function approvePO() {
 	if (rs.getNString(3) === "C") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '026')); // Confirmed
-		// Purchase
-		// Orders
-		// can
-		// not
-		// be
-		// rejected
+																		// Purchase
+																		// Orders
+																		// can
+																		// not
+																		// be
+																		// rejected
 		return;
 	}
 
@@ -268,19 +266,19 @@ function approvePO() {
 	if (rs.getNString(3) === "S") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '027')); // Confirmed
-		// Purchase
-		// Orders
-		// which
-		// have
-		// been
-		// sent
-		// to
-		// the
-		// partner
-		// can
-		// not
-		// be
-		// rejected
+																		// Purchase
+																		// Orders
+																		// which
+																		// have
+																		// been
+																		// sent
+																		// to
+																		// the
+																		// partner
+																		// can
+																		// not
+																		// be
+																		// rejected
 		return;
 	}
 
@@ -288,12 +286,12 @@ function approvePO() {
 	if (rs.getNString(4) === "D") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '028')); // Delivered
-		// Purchase
-		// Orders
-		// can
-		// not
-		// be
-		// rejected
+																		// Purchase
+																		// Orders
+																		// can
+																		// not
+																		// be
+																		// rejected
 		return;
 	}
 
@@ -301,12 +299,12 @@ function approvePO() {
 	if (rs.getNString(5) === "D") {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '029')); // Invoiced
-		// Purchase
-		// Orders
-		// can
-		// not
-		// be
-		// rejected
+																		// Purchase
+																		// Orders
+																		// can
+																		// not
+																		// be
+																		// rejected
 		return;
 	}
 
@@ -316,11 +314,11 @@ function approvePO() {
 
 		// Update Purchase Order Status in order to delete it
 		if (action === "Reject") {
-			query = "UPDATE \"<PACKAGE_NAME>.data::purchaseOrder\" set \"ApprovalStatus\" = 'R' where \"PurchaseOrderId\" = ?";
+			query = "UPDATE \"{{PACKAGE_NAME}}.data::EPM.Purchase.Header\" set APPROVALSTATUS = 'R' where PURCHASEORDERID = ?";			
 		}
 
 		if (action === "Accept") {
-			query = "UPDATE \"<PACKAGE_NAME>.data::purchaseOrder\" set \"ApprovalStatus\" = 'A' where \"PurchaseOrderId\" = ?";
+			query = "UPDATE \"{{PACKAGE_NAME}}.data::EPM.Purchase.Header\" set APPROVALSTATUS = 'A' where PURCHASEORDERID = ?";			
 		}
 
 		pstmt = conn.prepareStatement(query);
@@ -340,7 +338,6 @@ function approvePO() {
 	$.trace.debug(body);
 	$.response.contentType = 'application/text';
 	$.response.setBody(body);
-	$.response.headers.set('access-control-allow-origin', '*');
 	$.response.status = $.net.http.OK;
 
 }
@@ -354,6 +351,6 @@ case "approval":
 	approvePO();
 	break;
 default:
-	$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-	$.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '002', aCmd));
+	$.response.status = $.net.http.BAD_REQUEST;
+	$.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '002', encodeURI(aCmd)));
 }

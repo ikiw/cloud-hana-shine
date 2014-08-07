@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>  
+<html>  
+<head> 
+    <title>Simple Label</title> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/sap/ui5/1/resources/sap-ui-core.js" 
+        type="text/javascript"   
+        id="sap-ui-bootstrap"  
+        data-sap-ui-libs="sap.ui.commons"  
+        data-sap-ui-theme="sap_bluecrystal">  
+    </script>  
+
+
+    <script type="text/javascript">
+
+
+    // Instanciate our label to be placed on-screen.
+    var oLabel1 = new sap.ui.commons.Label({text: 'waiting'});
+
+
+	// Now we place our label into our HTML body.
+	oLabel1.placeAt("simpleLabel");
+
+
+	var notificationCallback = function(topic, context){
+
+
+		// We are only interested in button presses.
+		// So we see if there is any notification for a button press.
+		var buttonNotfication = context.getPropertyByKey("EV_BUTTON_PRESSED");
+
+
+		// Now we have some text so we set the text on our label to be that.
+		oLabel1.setText(buttonNotfication);
+
+	};
+
+
+	// This function does the subscription to the context notifications.
+	function notifications_subscribe() {
+		var subID = gadgets.sapcontext.subscribe(notificationCallback);
+	}
+
+
+	try{
+		// we tell the widget to run the subscribe function when we connect (load).
+		gadgets.HubSettings.onConnect = notifications_subscribe;
+	}catch (e){
+		console.log('Unable to subscribe for notifications - are we running locally?');
+	}
+
+
+    </script>
+
+
+</head>
+<body>
+	<div id="simpleLabel"></div>
+</body>
+</html>
+

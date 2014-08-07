@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>  
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Widget</title>
+    <script src="/sap/ui5/1/resources/sap-ui-core.js"
+            id="sap-ui-bootstrap"
+            data-sap-ui-libs="sap.ui.ux3,sap.ui.commons,sap.ui.table,sap.viz"
+            data-sap-ui-theme="sap_bluecrystal">
+    </script>
+    
+    <script language="javascript" type="text/javascript">
+                     var gadgetPrefs = new gadgets.GadgetPrefs();
+               	 window.onload = initiateGadgetProps;
+                function initiateGadgetProps() {
+                	setNewStatus();
+                                   
+               }
+                
+	                function setStatus() {
+                    var WantedStatus = document.getElementById('Po Lifecycle').value;
+                    gadgetPrefs.setPreference('Po Lifecycle', WantedStatus, gadgetCallback);
+                    setNewStatus();
+                }
+                function setNewStatus() {
+                    var CurrentButton = gadgetPrefs.getString("Po Lifecycle");
+                                      
+                    
+                }
+                
+
+                
+                
+      </script>
+    
+    
+    <!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+    <script type="text/javascript" src="/{{PACKAGE_NAME}}/ui/uis/js/global.js"></script>
+    <style>
+        .sapUiTableColHdrCnt{
+            height: 29px !important;
+        }
+    </style>
+    <script>
+        //sap.ui.localResources("sp5_epm_po_worklist");
+     jQuery.sap.registerModulePath("uis", "/{{PACKAGE_NAME}}/ui/uis/");
+        var view = sap.ui.view({id: "table", viewName: "uis.js.Table", type: sap.ui.core.mvc.ViewType.JS});
+        view.placeAt("content");
+    </script>
+
+</head>
+<body class="sapUiBody" role="application">
+<div id="content"></div>
+</body>
+</html>

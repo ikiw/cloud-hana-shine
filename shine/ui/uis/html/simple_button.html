@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>  
+<html>  
+<head> 
+    <title>Simple Button</title> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/sap/ui5/1/resources/sap-ui-core.js" 
+        type="text/javascript"   
+        id="sap-ui-bootstrap"  
+        data-sap-ui-libs="sap.ui.commons"  
+        data-sap-ui-theme="sap_bluecrystal">  
+    </script>  
+
+ 
+    <script language="javascript" type="text/javascript">
+                     var gadgetPrefs = new gadgets.GadgetPrefs();
+                window.onload = initiateGadgetProps;
+                function initiateGadgetProps() {
+                	setNewButton();
+                    SetNewSendingText();
+                 
+               }
+                
+	                function setButton() {
+                    var WantedButton = document.getElementById('Button Name').value;
+                    gadgetPrefs.setPreference('Button Name', WantedButton, gadgetCallback);
+                    setNewButton();
+                }
+                function setNewButton() {
+                    var CurrentButton = gadgetPrefs.getString("Button Name");
+                    document.getElementById('btn').text = CurrentButton;
+                    
+                    
+                }
+                
+                function SetSendingText() {
+                    var wantedText = document.getElementById('Sending Text').value;
+                    gadgetPrefs.setPreference('Sending Text', wantedText, gadgetCallback);
+                    SetNewSendingText();
+                }
+                function SetNewSendingText() {
+                    var currentText = gadgetPrefs.getString("Sending Text");
+                                   
+                    
+                }
+                
+                
+                     </script>
+    <script type="text/javascript">
+
+
+    // Instanciate our button to be placed on-screen.
+    var CurrentButton = gadgetPrefs.getString("Button Name");
+    var currentText = gadgetPrefs.getString("Sending Text");
+    var oButton1 = new sap.ui.commons.Button({
+		text : CurrentButton ,
+		tooltip : "Please oh please click me!",
+		 
+		press : function() {
+			try{
+				gadgets.sapcontext.publish("EV_BUTTON_PRESSED", currentText );
+			}catch(e){
+				console.log('Oh dear, I could not publish your event. Are you running this on a SAP HANA server with contexts enabled?');
+			}
+		}
+	});
+
+
+	// Now we place our button into our HTML body.
+	oButton1.placeAt("simpleButton");
+
+
+    </script>
+
+
+</head>
+<body>
+	<div id="simpleButton"></div>
+</body>
+</html>
+

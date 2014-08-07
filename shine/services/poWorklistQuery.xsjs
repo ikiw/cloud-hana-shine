@@ -1,7 +1,7 @@
-$.import("<PACKAGE_NAME>.services", "messages");
-var MESSAGES = $.<PACKAGE_NAME>.services.messages;
-$.import("<PACKAGE_NAME>.services", "session");
-var SESSIONINFO = $.<PACKAGE_NAME>.services.session;
+$.import("{{PACKAGE_NAME}}.services", "messages");
+var MESSAGES = $.{{PACKAGE_NAME}}.services.messages;
+$.import("{{PACKAGE_NAME}}.services", "session");
+var SESSIONINFO = $.{{PACKAGE_NAME}}.services.session; 
 
 function getFilter() {
 	function createFilterEntry(rs, attribute, obj) {
@@ -11,7 +11,6 @@ function getFilter() {
 			"category" : obj
 		};
 	}
-
 	var body = '';
 	var terms = $.request.parameters.get('query');
 	var termList = terms.split(" ");
@@ -30,8 +29,8 @@ function getFilter() {
 
 	try {
 		// Business Partner Company Name
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"CompanyName\") FROM \"<PACKAGE_NAME>.data::businessPartner\" "
-				+ " WHERE CONTAINS(\"CompanyName\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(COMPANYNAME) FROM "{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" '
+				+ ' WHERE CONTAINS(COMPANYNAME,?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -45,8 +44,8 @@ function getFilter() {
 		pstmt.close();
 
 		// Business Partner City
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"City\") FROM \"<PACKAGE_NAME>.models::AT_BUYER\" "
-				+ " WHERE CONTAINS(\"City\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR("CITY") FROM "{{PACKAGE_NAME}}.models::AT_BUYER" '
+				+ ' WHERE CONTAINS("CITY",?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -60,8 +59,8 @@ function getFilter() {
 		pstmt.close();
 
 		// Product - Product Category
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"Category\") FROM \"<PACKAGE_NAME>.data::products\" "
-				+ "WHERE CONTAINS(\"Category\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(CATEGORY) FROM "{{PACKAGE_NAME}}.data::EPM.MasterData.Products" '
+				+ 'WHERE CONTAINS(CATEGORY,?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -75,8 +74,8 @@ function getFilter() {
 		pstmt.close();
 
 		// Product - Product ID
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"ProductId\") FROM \"<PACKAGE_NAME>.data::products\" "
-				+ "WHERE CONTAINS(\"ProductId\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PRODUCTID) FROM "{{PACKAGE_NAME}}.data::EPM.MasterData.Products" '
+				+ 'WHERE CONTAINS(PRODUCTID,?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -90,8 +89,8 @@ function getFilter() {
 		pstmt.close();
 
 		// Product - Product Name
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"Product_Name\") FROM \"<PACKAGE_NAME>.models::AT_PRODUCT\" "
-				+ "WHERE CONTAINS(\"Product_Name\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR("PRODUCT_NAME") FROM "{{PACKAGE_NAME}}.models::AT_PROD" '
+				+ 'WHERE CONTAINS("PRODUCT_NAME",?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -105,8 +104,8 @@ function getFilter() {
 		pstmt.close();
 
 		// Product - Product Desc
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"Product_Description\") FROM \"<PACKAGE_NAME>.models::AT_PRODUCT\" "
-				+ "WHERE CONTAINS(\"Product_Description\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR("PRODUCT_DESCRIPTION") FROM "{{PACKAGE_NAME}}.models::AT_PROD" '
+				+ 'WHERE CONTAINS("PRODUCT_DESCRIPTION",?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
@@ -117,21 +116,21 @@ function getFilter() {
 		}
 
 		// PO - PO ID
-		query = "SELECT TOP 50 DISTINCT TO_NVARCHAR(\"PurchaseOrderId\") FROM \"<PACKAGE_NAME>.data::purchaseOrder\" "
-				+ "WHERE CONTAINS(\"PurchaseOrderId\",?)";
+		query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PURCHASEORDERID) FROM "{{PACKAGE_NAME}}.data::EPM.Purchase.Header" '
+				+ 'WHERE CONTAINS(PURCHASEORDERID,?)';
 		pstmt = conn.prepareStatement(query);
 		pstmt.setString(1, terms);
 		rs = pstmt.executeQuery();
 
 		while (rs.next()) {
 			list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-					'012'), "purchaseOrder"));
+					'002'), "purchaseOrder"));
 		}
 
 		rs.close();
 		pstmt.close();
+
 		conn.close();
-		
 	} catch (e) {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(e.message);
@@ -141,7 +140,6 @@ function getFilter() {
 	$.trace.debug(body);
 	$.response.contentType = 'application/json';
 	$.response.setBody(body);
-	$.response.headers.set('access-control-allow-origin', '*');
 	$.response.status = $.net.http.OK;
 }
 
@@ -159,33 +157,42 @@ function getTotalOrders() {
 	var list = [];
 
 	switch (ivGroupBy) {
-	case "PartnerCompanyName":
+	case "PARTNERCOMPANYNAME":
 		break;
-	case "ProductCategory":
-		break;
-	case "PartnerCity":
-		break;
-	case "PartnerPostalCode":
-		break;
-	case "ProductId":
-		break;
+	case "PRODUCTCATEGORY":
+        break;
+    case "PARTNERCITY":
+        break;
+    case "PARTNERPOSTALCODE":
+        break;
+    case "PRODUCTID":
+        break;
+
 	default:
-		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+		$.response.status = $.net.http.BAD_REQUEST;
 		$.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '000', ivGroupBy));
 		return;
+		
 	}
+	
+	// need to clean ivCurrency to avoid injection attack
+	ivCurrency = encodeURI(ivCurrency);
 	if (ivCurrency === null) {
 		ivCurrency = "USD";
 	}
-	
 	ivCurrency = ivCurrency.substring(0, 3);
-
+    
+	
+	var CheckUpperCase = new RegExp('[A-Z]{3}'); 
+	
+	if ( CheckUpperCase.test(ivCurrency) == true ) 	
+	{
+    
 	try {
-		var query = 'SELECT top 5 "'
-				+ ivGroupBy
-				+ '", SUM("ConvGrossAmount") FROM "<PACKAGE_NAME>.models::AN_PURCHASE_COMMON_CURRENCY" (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \''
-				+ ivCurrency + '\')) group by "' + ivGroupBy
-				+ '" order by sum("ConvGrossAmount") desc';
+	    // not able to add Currency as prepared statement using setString so adding it in query directly
+		var query = 'SELECT top 5 ' + ivGroupBy + ', SUM("CONVGROSSAMOUNT") FROM "{{PACKAGE_NAME}}.models::AN_PURCHASE_COMMON_CURRENCY"' 
+		            + ' (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \''+ ivCurrency + '\')) group by ' 
+		            + ivGroupBy + ' order by sum("CONVGROSSAMOUNT") desc';
 		$.trace.debug(query);
 		var conn = $.db.getConnection();
 		var pstmt = conn.prepareStatement(query);
@@ -197,13 +204,12 @@ function getTotalOrders() {
 
 		rs.close();
 		pstmt.close();
-		
 	} catch (e) {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(e.message);
 		return;
 	}
-
+	
 	body = JSON.stringify({
 		"entries" : list
 	});
@@ -211,15 +217,26 @@ function getTotalOrders() {
 	$.response.contentType = 'application/json; charset=UTF-8';
 	$.response.setBody(body);
 	$.response.status = $.net.http.OK;
-}
+	
+	}
+	
+	else
+	{		$.response.status = $.net.http.BAD_REQUEST;
+	$.response.setBody(MESSAGES.getMessage('SEPM_BOR_MESSAGES','053', encodeURI(ivCurrency)));
+	return;
+	};
+
+	
+};
 
 function downloadExcel() {
 	var body = '';
 
 	try {
-		var query = 'SELECT TOP 25000 \"PurchaseOrderId\", \"PartnerId\", \"CompanyName\", \"CreatedByLoginName\", \"CreatedAt\", \"GrossAmount\" '
-				+ 'FROM \"_SYS_BIC\".\"<PACKAGE_NAME>.data::purchaseOrderHeaderExt\" order by \"PurchaseOrderId\"';
-
+		var query = 'SELECT TOP 25000 "PurchaseOrderId", "PartnerId", "CompanyName", "CreatedByLoginName", "History.CREATEDAT", "GrossAmount" '
+				+ 'FROM "{{PACKAGE_NAME}}.data::purchaseOrderHeaderExternal" order by "PurchaseOrderId"';
+		
+		$.trace.debug(query);
 		var conn = $.db.getConnection();
 		var pstmt = conn.prepareStatement(query);
 		var rs = pstmt.executeQuery();
@@ -238,10 +255,6 @@ function downloadExcel() {
 					+ rs.getNString(3) + "\t" + rs.getNString(4) + "\t"
 					+ rs.getDate(5) + "\t" + rs.getDecimal(6) + "\n";
 		}
-		
-		rs.close();
-		pstmt.close();
-		
 	} catch (e) {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(e.message);
@@ -252,7 +265,6 @@ function downloadExcel() {
 	$.response.contentType = 'application/vnd.ms-excel; charset=utf-16le';
 	$.response.headers.set('Content-Disposition',
 			'attachment; filename=Excel.xls');
-	$.response.headers.set('access-control-allow-origin', '*');
 	$.response.status = $.net.http.OK;
 
 }

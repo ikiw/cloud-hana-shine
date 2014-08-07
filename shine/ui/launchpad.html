@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SHINE</title>
+		<script src="/sap/ui5/1/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.layout,sap.viz,sap.ui.ux3"
+				data-sap-ui-theme='sap_bluecrystal'
+				>
+		</script>
+		
+		<style type="text/css">
+		.paddingML{
+			padding:25px;
+		}
+		</style>
+		
+		<script>
+				var oShell = new sap.ui.ux3.Shell({
+				id : "main",
+				appTitle : 'SHINE Demo',
+				appIcon: "./salesDashboard/images/SAPLogo.gif",
+				showLogoutButton : false,
+				showSearchTool : false,
+				showFeederTool : false,
+				showTools : false,
+				showPane : false,
+				designType : sap.ui.ux3.ShellDesignType.Crystal,
+				worksetItems : [ new sap.ui.ux3.NavigationItem({
+					id : "nav-overview",
+					text : 'UI Contents'
+				}) ],
+			});
+			
+			var oLayout = new sap.ui.commons.layout.MatrixLayout({
+			id : "matrix1",
+			 width: '100%',
+			height: '100%',
+			layoutFixed : false
+			});
+			
+			function getLayout(imageUrl, title, url) {
+				var layout = new sap.ui.commons.layout.VerticalLayout();
+				
+				var oImage = new sap.ui.commons.Image({
+					src : "./thumbnails/" + imageUrl,
+					width: '400px',
+					press: function() {
+						window.location = url;
+					}
+				});
+				
+				var textView = new sap.ui.commons.TextView({
+					text: title,
+					width: '100%',
+					textAlign: sap.ui.core.TextAlign.Center,
+					design: sap.ui.commons.TextViewDesign.H2
+				});
+				
+				layout.addContent(textView);
+				layout.addContent(oImage);
+				
+				layout.addStyleClass('.paddingML');
+			
+				return layout;
+			}
+
+			oLayout.createRow( new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('dg.png','Data Generator','/{{PACKAGE_NAME}}/admin/admin.html')]}),
+			new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('poworklist.png','PO Worklist','/{{PACKAGE_NAME}}/ui/poworklist/poWorklist.html')]}),
+			 new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('sales.png','Sales Dashboard','/{{PACKAGE_NAME}}/ui/salesDashboard/index.html')]})
+			);	
+
+			oLayout.createRow( new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('userCRUD.png','User CRUD','/{{PACKAGE_NAME}}/ui/userCRUD/index.html')]}), 
+			new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('uis1.png','HANA UI Integration Services - Blue Crystal Theme', '/i053959sapdev/uis/clients/ushell-app/shells/hana/shell.html#appsite-display~ctx?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample')]}),
+			new sap.ui.commons.layout.MatrixLayoutCell({
+			hAlign: sap.ui.commons.layout.HAlign.Center,
+			content: [getLayout('uis.png','HANA UI Integration Services - Golden Reflection Theme', '/i053959sapdev/uis/clients/desktop/applications/uis/runtime.html?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample#context/eyJjdHhSb3V0ZUlkIjoiMTM4MzA1MTUzODI3MiIsImNvbnRleHRNYXAiOnt9fQ==')]}));	
+			
+			// initial shell content
+			oShell.addContent(oLayout);
+
+			oShell.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

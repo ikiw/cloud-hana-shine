@@ -1,0 +1,6 @@
+{
+"name" : "Gadget Properties",
+"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/personalization.xml" ,
+"description": "",
+"icon" : ""
+}

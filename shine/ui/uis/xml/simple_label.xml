@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Simple Label">
+    	<Require feature="sap-context"/>
+    </ModulePrefs>
+      <Content type="html" href="/{{PACKAGE_NAME}}/ui/uis/html/simple_label.html">
+      </Content>
+</Module>
+

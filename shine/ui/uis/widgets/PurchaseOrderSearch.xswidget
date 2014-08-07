@@ -1,0 +1,6 @@
+{
+"name" : "Purchase Order Search",
+"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/po work list search.xml" ,
+"description": "",
+"icon" : ""
+}

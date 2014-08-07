@@ -1,0 +1,16 @@
+<Module>
+
+<ModulePrefs title="Simple Button">
+
+<Require feature="sap-context"/>
+<Require feature="gadgetprefs"/>
+
+
+</ModulePrefs>
+  <UserPref name="Button Name" default_value="Click Me!"/>
+  <UserPref name="Sending Text" default_value="Have a Good Day"/>
+<Content type="html" href="/{{PACKAGE_NAME}}/ui/uis/html/simple_button.html">
+
+</Content>
+
+</Module>

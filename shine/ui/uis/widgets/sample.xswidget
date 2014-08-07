@@ -1,0 +1,6 @@
+{
+"name" : "Sample Widget",
+"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/sample.xml" ,
+"description": "",
+"icon" : ""
+}

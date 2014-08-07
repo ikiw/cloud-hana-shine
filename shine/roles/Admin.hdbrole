@@ -1,0 +1,23 @@
+role {{PACKAGE_NAME}}.roles::Admin 
+	extends role {{PACKAGE_NAME}}.roles::User
+{
+	package {{PACKAGE_NAME}}.data: REPO.READ, REPO.EDIT_NATIVE_OBJECTS, REPO.ACTIVATE_NATIVE_OBJECTS, REPO.MAINTAIN_NATIVE_PACKAGES, REPO.ACTIVATE_IMPORTED_OBJECTS;
+	package {{PACKAGE_NAME}}: REPO.READ, REPO.EDIT_NATIVE_OBJECTS, REPO.ACTIVATE_NATIVE_OBJECTS, REPO.MAINTAIN_NATIVE_PACKAGES;
+	
+	//catalog sql object "SYS"."REPOSITORY_REST" : EXECUTE;
+	
+	catalog schema "{{SCHEMA_NAME}}" : SELECT, EXECUTE, CREATE ANY;
+	
+	sql object {{PACKAGE_NAME}}.data:addressSeqId.hdbsequence : SELECT, ALTER;
+	//catalog sql object	"_SYS_BIC"."{{PACKAGE_NAME}}.data::addressSeqId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::employeeSeqId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::partnerSeqId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::purchaseOrderSeqId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::salesOrderId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::sessionId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::textSeqId" : ALTER;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" : SELECT;
+	//catalog sql object "_SYS_BIC"."{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner": SELECT;*/
+	application privilege: {{PACKAGE_NAME}}::Admin;	
+	
+}

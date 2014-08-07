@@ -2,280 +2,296 @@
 <Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_PURCHASE_ORDER_WORKLIST" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
   <origin/>
   <descriptions defaultDescription="Purchase Order Worklist"/>
-  <metadata changedAt="2013-05-17 15:06:13.037" createdAt="2012-12-06 15:50:03.911"/>
+  <metadata changedAt="2013-11-05 13:18:18.36"/>
   <attributes>
-    <attribute id="PurchaseOrderId" hidden="false" displayAttribute="false" key="true">
-      <descriptions defaultDescription="PurchaseOrderId"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" columnName="PurchaseOrderId"/>
+    <attribute id="PARTNERID">
+      <descriptions defaultDescription="PARTNERID"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header" columnName="PARTNERID"/>
     </attribute>
-    <attribute id="PurchaseOrderItem" hidden="false" displayAttribute="false" key="true">
-      <descriptions defaultDescription="PurchaseOrderItem"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" columnName="PurchaseOrderItem"/>
+    <attribute id="CURRENCY">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header" columnName="CURRENCY"/>
     </attribute>
-    <attribute id="PartnerId" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="PartnerId"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder" columnName="PartnerId"/>
+    <attribute id="GROSSAMOUNT">
+      <descriptions defaultDescription="GROSSAMOUNT"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header" columnName="GROSSAMOUNT"/>
     </attribute>
-    <attribute id="CompanyName" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="CompanyName"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner" columnName="CompanyName"/>
+    <attribute id="PURCHASEORDERID" key="true">
+      <descriptions defaultDescription="PURCHASEORDERID"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="PURCHASEORDERID"/>
     </attribute>
-    <attribute id="GrossAmount" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="GrossAmount"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder" columnName="GrossAmount"/>
+    <attribute id="PURCHASEORDERITEM" key="true">
+      <descriptions defaultDescription="PURCHASEORDERITEM"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="PURCHASEORDERITEM"/>
     </attribute>
-    <attribute id="Currency" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Currency"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder" columnName="Currency"/>
+    <attribute id="PRODUCTID">
+      <descriptions defaultDescription="PRODUCTID"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="PRODUCTID"/>
     </attribute>
-    <attribute id="LifecycleDesc" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Description"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" columnName="Description"/>
+    <attribute id="QUANTITY">
+      <descriptions defaultDescription="QUANTITY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="QUANTITY"/>
     </attribute>
-    <attribute id="ApprovalDesc" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Description"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ApprovalConstants" columnName="Description"/>
+    <attribute id="QUANTITYUNIT">
+      <descriptions defaultDescription="QUANTITYUNIT"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="QUANTITYUNIT"/>
     </attribute>
-    <attribute id="ConfirmationDesc" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Description"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ConfirmationConstants" columnName="Description"/>
+    <attribute id="COMPANYNAME">
+      <descriptions defaultDescription="COMPANYNAME"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" columnName="COMPANYNAME"/>
     </attribute>
-    <attribute id="OrderingDesc" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Description"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="OrderingConstants" columnName="Description"/>
+    <attribute id="TYPECODE">
+      <descriptions defaultDescription="TYPECODE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products" columnName="TYPECODE"/>
     </attribute>
-    <attribute id="ProductId" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="ProductId"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" columnName="ProductId"/>
+    <attribute id="CATEGORY">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products" columnName="CATEGORY"/>
     </attribute>
-    <attribute id="ProductTypeCode" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="TypeCode"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products" columnName="TypeCode"/>
+    <attribute id="PRODUCTNAME">
+      <descriptions defaultDescription="PRODUCTNAME"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts" columnName="TEXT"/>
     </attribute>
-    <attribute id="ProductCategory" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Category"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products" columnName="Category"/>
+    <attribute id="CITY">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="CITY"/>
     </attribute>
-    <attribute id="ProductName" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Text"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts" columnName="Text"/>
+    <attribute id="POSTALCODE">
+      <descriptions defaultDescription="POSTALCODE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" columnName="POSTALCODE"/>
     </attribute>
-    <attribute id="ProductDesc" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="Text"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts" alias="ProductDescriptionTexts" columnName="Text"/>
+    <attribute id="PRODUCTDESC">
+      <descriptions defaultDescription="PRODUCTDESC"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts" alias="ProductDescriptionTexts" columnName="TEXT"/>
     </attribute>
-    <attribute id="PartnerCity" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="City"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="City"/>
+    <attribute id="GROSSAMOUNT_1">
+      <descriptions defaultDescription="GROSSAMOUNT_1"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="GROSSAMOUNT"/>
     </attribute>
-    <attribute id="PartnerPostalCode" hidden="false" displayAttribute="false">
-      <descriptions defaultDescription="PostalCode"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses" columnName="PostalCode"/>
+    <attribute id="DELIVERYDATE">
+      <descriptions defaultDescription="DELIVERYDATE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" columnName="DELIVERYDATE"/>
     </attribute>
-    <attribute id="Quantity">
-      <descriptions defaultDescription="Quantity"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" columnName="Quantity"/>
+    <attribute id="PRICE">
+      <descriptions defaultDescription="PRICE"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products" columnName="PRICE"/>
     </attribute>
-    <attribute id="QuantityUnit">
-      <descriptions defaultDescription="QuantityUnit"/>
-      <keyMapping schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" columnName="QuantityUnit"/>
+    <attribute id="PRODUCTPICURL">
+      <descriptions defaultDescription="PRODUCTPICURL"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products" columnName="PRODUCTPICURL"/>
+    </attribute>
+    <attribute id="LIFECYCLEDESC">
+      <descriptions defaultDescription="Lifecycle Description"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="APPROVALDESC">
+      <descriptions defaultDescription="Approval Description"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ApprovalConstants" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="CONFIRMATIONDESC">
+      <descriptions defaultDescription="Confirmation Description"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ConfirmationConstants" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="ORDERINGDESC">
+      <descriptions defaultDescription="Ordering Description"/>
+      <keyMapping schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="OrderingConstants" columnName="DESCRIPTION"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <privateDataFoundation>
     <tableProxies>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts" alias="ProductDescriptionTexts"/>
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts" alias="ProductDescriptionTexts"/>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants"/>
-        <columnFilter columnName="Domain">
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants"/>
+        <columnFilter columnName="DOMAIN">
           <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="D_PO_LC"/>
         </columnFilter>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ApprovalConstants"/>
-        <columnFilter columnName="Domain">
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ApprovalConstants"/>
+        <columnFilter columnName="DOMAIN">
           <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="D_PO_AP"/>
         </columnFilter>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ConfirmationConstants"/>
-        <columnFilter columnName="Domain">
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ConfirmationConstants"/>
+        <columnFilter columnName="DOMAIN">
           <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="D_PO_CF"/>
         </columnFilter>
       </tableProxy>
       <tableProxy>
-        <table schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="OrderingConstants"/>
-        <columnFilter columnName="Domain">
+        <table schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="OrderingConstants"/>
+        <columnFilter columnName="DOMAIN">
           <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="D_PO_OR"/>
         </columnFilter>
       </tableProxy>
     </tableProxies>
     <joins>
       <join>
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem"/>
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item"/>
         <leftColumns>
-          <columnName>PurchaseOrderId</columnName>
+          <columnName>PURCHASEORDERID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>PurchaseOrderId</columnName>
+          <columnName>PURCHASEORDERID</columnName>
         </rightColumns>
         <properties cardinality="C1_N" joinOperator="Equal" joinType="leftOuter"/>
       </join>
       <join>
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner"/>
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner"/>
         <leftColumns>
-          <columnName>PartnerId</columnName>
+          <columnName>PARTNERID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>PartnerId</columnName>
+          <columnName>PARTNERID</columnName>
+        </rightColumns>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter"/>
+      </join>
+      <join>
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products"/>
+        <leftColumns>
+          <columnName>PRODUCTID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>PRODUCTID</columnName>
         </rightColumns>
         <properties cardinality="C1_1" joinOperator="Equal" joinType="referential"/>
       </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants"/>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts"/>
         <leftColumns>
-          <columnName>LifecycleStatus</columnName>
+          <columnName>NAMEID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>FixedValue</columnName>
-        </rightColumns>
-        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
-      </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ApprovalConstants"/>
-        <leftColumns>
-          <columnName>ApprovalStatus</columnName>
-        </leftColumns>
-        <rightColumns>
-          <columnName>FixedValue</columnName>
-        </rightColumns>
-        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
-      </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="ConfirmationConstants"/>
-        <leftColumns>
-          <columnName>ConfirmStatus</columnName>
-        </leftColumns>
-        <rightColumns>
-          <columnName>FixedValue</columnName>
-        </rightColumns>
-        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
-      </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrder"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::constants" alias="OrderingConstants"/>
-        <leftColumns>
-          <columnName>OrderingStatus</columnName>
-        </leftColumns>
-        <rightColumns>
-          <columnName>FixedValue</columnName>
+          <columnName>TEXTID</columnName>
         </rightColumns>
         <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
       </join>
       <join>
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::purchaseOrderItem"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products"/>
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses"/>
         <leftColumns>
-          <columnName>ProductId</columnName>
+          <columnName>ADDRESSID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>ProductId</columnName>
+          <columnName>ADDRESSID</columnName>
         </rightColumns>
         <properties cardinality="C1_1" joinOperator="Equal" joinType="referential"/>
       </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts"/>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts" alias="ProductDescriptionTexts"/>
         <leftColumns>
-          <columnName>NameId</columnName>
+          <columnName>DESCID</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>TextId</columnName>
+          <columnName>TEXTID</columnName>
         </rightColumns>
         <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
       </join>
-      <join languageColumn="Language">
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::products"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::texts" alias="ProductDescriptionTexts"/>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants"/>
         <leftColumns>
-          <columnName>DescId</columnName>
+          <columnName>LIFECYCLESTATUS</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>TextId</columnName>
+          <columnName>FIXEDVALUE</columnName>
         </rightColumns>
         <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
       </join>
-      <join>
-        <leftTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::businessPartner"/>
-        <rightTable schemaName="<SCHEMA_NAME>" columnObjectName="<PACKAGE_NAME>.data::addresses"/>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ApprovalConstants"/>
         <leftColumns>
-          <columnName>AddressId</columnName>
+          <columnName>APPROVALSTATUS</columnName>
         </leftColumns>
         <rightColumns>
-          <columnName>AddressId</columnName>
+          <columnName>FIXEDVALUE</columnName>
         </rightColumns>
-        <properties cardinality="C1_1" joinOperator="Equal" joinType="referential"/>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
+      </join>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="ConfirmationConstants"/>
+        <leftColumns>
+          <columnName>CONFIRMSTATUS</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>FIXEDVALUE</columnName>
+        </rightColumns>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
+      </join>
+      <join languageColumn="LANGUAGE">
+        <leftTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header"/>
+        <rightTable schemaName="_SYS_BIC" columnObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" alias="OrderingConstants"/>
+        <leftColumns>
+          <columnName>ORDERINGSTATUS</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>FIXEDVALUE</columnName>
+        </rightColumns>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="textTable"/>
       </join>
     </joins>
     <layout>
       <shapes>
-        <shape modelObjectName="<PACKAGE_NAME>.data::purchaseOrder" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="50" y="25"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Header" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1183" y="64"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::purchaseOrderItem" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="50" y="347"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.Purchase.Item" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1707" y="-3"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::businessPartner" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="50" y="589"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.BusinessPartner" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="567" y="16"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::products" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="575" y="25"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Products" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="2207" y="20"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::addresses" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="575" y="427"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.MasterData.Addresses" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="16" y="112"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::texts" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="575" y="637"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Texts" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="2722" y="50"/>
         </shape>
-        <shape modelObjectName="ProductDescriptionTexts" modelObjectType="catalog">
-          <upperLeftCorner x="575" y="751"/>
+        <shape modelObjectName="ProductDescriptionTexts" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="2742" y="183"/>
         </shape>
-        <shape modelObjectName="<PACKAGE_NAME>.data::constants" modelObjectNameSpace="<SCHEMA_NAME>" modelObjectType="catalog">
-          <upperLeftCorner x="1166" y="25"/>
+        <shape modelObjectName="{{PACKAGE_NAME}}.data::EPM.Util.Constants" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1700" y="246"/>
         </shape>
-        <shape modelObjectName="ApprovalConstants" modelObjectType="catalog">
-          <upperLeftCorner x="1166" y="155"/>
+        <shape modelObjectName="ApprovalConstants" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1688" y="367"/>
         </shape>
-        <shape modelObjectName="ConfirmationConstants" modelObjectType="catalog">
-          <upperLeftCorner x="1166" y="285"/>
+        <shape modelObjectName="ConfirmationConstants" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1689" y="496"/>
         </shape>
-        <shape modelObjectName="OrderingConstants" modelObjectType="catalog">
-          <upperLeftCorner x="1166" y="415"/>
+        <shape modelObjectName="OrderingConstants" modelObjectNameSpace="_SYS_BIC" modelObjectType="catalog">
+          <upperLeftCorner x="1088" y="492"/>
         </shape>
       </shapes>
     </layout>

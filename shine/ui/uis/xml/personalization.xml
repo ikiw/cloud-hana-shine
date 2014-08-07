@@ -1,0 +1,112 @@
+<Module>
+    <ModulePrefs title="Gadget Properties">
+        <Require feature="gadgetprefs"/>
+    </ModulePrefs>
+
+    <UserPref name="color" default_value="Aqua" datatype="enum">
+        <EnumValue value="Red" display_value="Red Value"/>
+        <EnumValue value="Aqua" display_value="Aqua Value"/>
+        <EnumValue value="Lime" display_value="Lime Value"/>
+        <EnumValue value="Yellow" display_value="Yellow Value"/>
+        <EnumValue value="Pink" display_value="Pink Value"/>
+        <EnumValue value="Orange" display_value="Orange Value"/>
+        <EnumValue value="White" display_value="White Value"/>
+    </UserPref>
+
+    <UserPref name="title" default_value="gadget title"/>
+    <UserPref name="controlVisibiltyFlag" default_value="true"  datatype="bool"/>
+
+    <Content type="html">
+        <![CDATA[
+
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+        <html>
+        <head>
+            <script language="javascript" type="text/javascript">
+                function gadgetCallback(status) {
+                    if (status == false)
+                        document.getElementById('comments').innerHTML = "This is the gadget developer callback , the set property failed.";
+                    else
+                        document.getElementById('comments').innerHTML = "This is the gadget developer callback , the set property succeeded.";
+                }
+                var gadgetPrefs = new gadgets.GadgetPrefs();
+                window.onload = initiateGadgetProps;
+                function initiateGadgetProps() {
+                    setBGcolor();
+                    setNewTitle();
+                    setNewControlVisibilty();
+                }
+
+                function setColor() {
+                    var selectedColor = document.getElementById('color').value;
+                    gadgetPrefs.setPreference('color', selectedColor, gadgetCallback);
+                    setBGcolor();
+                }
+
+                function setBGcolor() {
+                    var currentColor = gadgetPrefs.getString("color");
+                    document.getElementById('main').setAttribute("bgcolor", currentColor);
+                }
+                function setTitle() {
+                    var wantedTitle = document.getElementById('title').value;
+                    gadgetPrefs.setPreference('title', wantedTitle, gadgetCallback);
+                    setNewTitle();
+                }
+                function setNewTitle() {
+                    var currentTitle = gadgetPrefs.getString("title");
+                    document.getElementById('text_prop').innerHTML = currentTitle;
+                }
+
+                function setControlVisibilty() {
+                    var currentTitleMode = gadgetPrefs.getBool("controlVisibiltyFlag") ;
+                    if (currentTitleMode) {
+                        gadgetPrefs.setPreference('controlVisibiltyFlag', "false", gadgetCallback);
+                    }
+                    else {
+                        gadgetPrefs.setPreference('controlVisibiltyFlag', "true", gadgetCallback);
+                    }
+                    setNewControlVisibilty();
+                }
+
+                function setNewControlVisibilty() {
+                    var currentTitleMode = gadgetPrefs.getBool("controlVisibiltyFlag") ;
+                    var currentStatus;
+                    var buttonTitle = "";
+                    if (currentTitleMode) {
+                        currentStatus = "visible";
+                        document.getElementById('toggleButton').value = "Hide Property Controls";
+                    }
+                    else {
+                        currentStatus = "hidden";
+                        document.getElementById('toggleButton').value = "Show Property Controls";
+                    }
+                    if (typeof console !== "undefined") {
+                        console.log('setTitle: setting  value ' + currentStatus);
+                    }
+                    document.getElementById('contDiv').style.visibility = currentStatus;
+                }
+
+            </script>
+        </head>
+
+        <body id="main" bgcolor="#F290F0" style="font-family:Arial;">
+        <label id="text_prop" style="font-weight: bold ">Please Change me... </label><br/>
+        <input type="button" id='toggleButton' value="" onClick="setControlVisibilty();"/><br/><br/>
+
+        <div id="contDiv">
+        <label style="font-weight: bold ">Please Set The Widget's Title: </label><br/>
+        Title: <input type="text" name="Title" id='title'/>
+        <input type="button" id='titleButton' value="Change Title" onClick="setTitle();"/><br/><br/>
+        <label style="font-weight: bold ">Please select background color: </label><br/>
+        Color: <input type="text" name="color" id='color'/>
+        <input type="button" id='colorButton' value="Change Color" onClick="setColor();"/><br/><br/>
+        </div>
+        <div id="comments"></div>
+        <br/>
+        </body>
+        </html>
+
+        ]]>
+    </Content>
+</Module>
