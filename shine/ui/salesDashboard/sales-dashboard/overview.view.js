@@ -21,7 +21,7 @@ sap.ui.jsview("sales-dashboard.overview", {
 	    salesByRegionPanel.addContent(layoutNew);
 	    
 	    //Pie Chart Data model
-  	    var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/salesByRegion.xsodata", true);
+  	    var oModel = new sap.ui.model.odata.ODataModel("../../services/salesByRegion.xsodata", true);
   	    var sort1 = new sap.ui.model.Sorter("TOTAL_SALES");
   	    
   	    var dataset = new sap.viz.ui5.data.FlattenedDataset({
@@ -60,7 +60,7 @@ sap.ui.jsview("sales-dashboard.overview", {
 			salesByCountryPanel.setHeight("380px");
 			salesByCountryPanel.setWidth("100%");
 			
-	  	    var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/salesByCountry.xsodata/", true);
+	  	    var oModel = new sap.ui.model.odata.ODataModel("../../services/salesByCountry.xsodata/", true);
 	  	    var sort1 = new sap.ui.model.Sorter("TOTAL_SALES");
 	  	    
 	  	    var dataset = new sap.viz.ui5.data.FlattenedDataset({	  	    
@@ -107,7 +107,7 @@ sap.ui.jsview("sales-dashboard.overview", {
 			salesRankPanel.setHeight("380px");
 			salesRankPanel.setWidth("100%");
 			
-	  	    var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/salesSalesRank.xsodata/", true);
+	  	    var oModel = new sap.ui.model.odata.ODataModel("../../services/salesSalesRank.xsodata/", true);
 	  	    var sort1 = new sap.ui.model.Sorter("SALES");
 	  	    
 	     var dataset = new sap.viz.ui5.data.FlattenedDataset({

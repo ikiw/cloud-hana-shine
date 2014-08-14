@@ -242,15 +242,15 @@ sap.account.TileDialog.prototype.open = function(tileID) {
 	function getHrefLocation(tileID) {
 		switch (tileID) {
 		case 1:
-			return '/{{PACKAGE_NAME}}/admin/admin.html';
+			return 'admin/admin.html';
 		case 2:
-			return '/{{PACKAGE_NAME}}/ui/poworklist/poWorklist.html';
+			return 'ui/poworklist/poWorklist.html';
 		case 3:
-			return '/{{PACKAGE_NAME}}/ui/salesDashboard/index.html';
+			return 'ui/salesDashboard/index.html';
 		case 4:
-			return '/{{PACKAGE_NAME}}/ui/salesDashboard/soWorklist.html';
+			return 'ui/salesDashboard/soWorklist.html';
 		case 5:
-			return '/{{PACKAGE_NAME}}/ui/userCRUD/index.html';
+			return 'ui/userCRUD/index.html';
 		case 6:
 			return '/i053959sapdev/uis/clients/ushell-app/shells/hana/shell.html#appsite-display~ctx?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample';
 		case 7:

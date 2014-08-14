@@ -29,7 +29,7 @@ sap.ui.jsview("sales-dashboard.products", {
         });
         yearsComparePanel.addContent(layoutNew);
         var oModel = new sap.ui.model.odata.ODataModel(
-                "/{{PACKAGE_NAME}}/services/salesYearCompare.xsodata",
+                "../../services/salesYearCompare.xsodata",
                 true);
         var sort1 = new sap.ui.model.Sorter("PRODUCT_CATEGORY");
 
@@ -96,7 +96,7 @@ sap.ui.jsview("sales-dashboard.products", {
         productSalesPanel.addContent(layoutNew);
 
         var oModel = new sap.ui.model.odata.ODataModel(
-                "/{{PACKAGE_NAME}}/services/salesByProduct.xsodata",
+                "../../services/salesByProduct.xsodata",
                 true);
         var sort1 = new sap.ui.model.Sorter("TOTAL_SALES");
 

@@ -227,7 +227,7 @@ sap.account.CheckDialog.prototype.open = function() {
 	
 	// check the prerequesites
 	jQuery.ajax({
-	       url: '/{{PACKAGE_NAME}}/ui/launchpad/services/checkPrerequisites.xsjs',
+	       url: 'ui/launchpad/services/checkPrerequisites.xsjs',
 	       type: 'GET',
 	       dataType: 'text',
 	       success: function(data){

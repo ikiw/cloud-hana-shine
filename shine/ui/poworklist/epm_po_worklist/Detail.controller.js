@@ -56,7 +56,7 @@ sap.ui.controller("epm_po_worklist.Detail", {
 	
 	setGroupBy: function(oEvent,oController){
 		var groupBy = oEvent.oSource.getSelectedItemId(); 
-		var aUrl = '/{{PACKAGE_NAME}}/services/poWorklistQuery.xsjs?cmd=getTotalOrders'+'&groupby='+escape(groupBy)+'&currency=USD&filterterms=';
+		var aUrl = '../../services/poWorklistQuery.xsjs?cmd=getTotalOrders'+'&groupby='+escape(groupBy)+'&currency=USD&filterterms=';
 		
 		    jQuery.ajax({
 		       url: aUrl,

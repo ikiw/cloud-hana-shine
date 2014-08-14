@@ -24,7 +24,7 @@ sap.ui.jsview("sales-dashboard.details", {
 		  oLayout.createRow(oSearchView);
 		  
 			
-	  	  var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/salesOrders.xsodata/", true);
+	  	  var oModel = new sap.ui.model.odata.ODataModel("../../services/salesOrders.xsodata/", true);
 	   	  
 		  var arrayHeaders = new Array();
 	      var oControl;
@@ -221,7 +221,7 @@ sap.ui.jsview("sales-dashboard.details", {
 
 		});
 		
-		this.oComboBoxBp.setModel(new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/businessPartners.xsodata", 
+		this.oComboBoxBp.setModel(new sap.ui.model.odata.ODataModel("../../services/businessPartners.xsodata", 
 				true));
 		
 		var oItemTemplateBp = new sap.ui.core.ListItem();
@@ -273,7 +273,7 @@ sap.ui.jsview("sales-dashboard.details", {
 				});
 		
 		
-		oComboBoxPd.setModel(new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/productDetails.xsodata", 
+		oComboBoxPd.setModel(new sap.ui.model.odata.ODataModel("../../services/productDetails.xsodata", 
 				true));
       
       var oItemTemplatePd = new sap.ui.core.ListItem();

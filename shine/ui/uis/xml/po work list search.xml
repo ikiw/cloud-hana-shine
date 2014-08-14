@@ -1,7 +1,0 @@
-<Module>
-    <ModulePrefs title="Purchase Order Search">
-        <Require feature="sap-context"/>
-    </ModulePrefs>
-    <Content type="html" href="/{{PACKAGE_NAME}}/ui/uis/html/po work list search.html">
-    </Content>
-</Module>

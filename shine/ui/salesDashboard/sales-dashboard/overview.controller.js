@@ -18,7 +18,7 @@ sap.ui.controller("sales-dashboard.overview", {
 		         ]);
 		view.dropDown.setModel(oRegionModel);
 		
-		var oDiscountModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/salesDiscount.xsodata/");
+		var oDiscountModel = new sap.ui.model.odata.ODataModel("../../services/salesDiscount.xsodata/");
 		
 		var filterParam = '';
 		if (view.dropDown.getSelectedKey() == '') {

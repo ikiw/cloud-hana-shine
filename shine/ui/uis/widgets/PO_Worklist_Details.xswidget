@@ -1,6 +1,0 @@
-{
-"name" : "Purchase Order Worklist Details",
-"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/poworklist_details.xml" ,
-"description": "",
-"icon" : ""
-}

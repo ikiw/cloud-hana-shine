@@ -6,7 +6,7 @@ sap.ui.jsview("epm_po_worklist.Detail", {
 
 	createContent : function(oController) {
 		
-	  var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/poWorklistJoin.xsodata/", false);
+	  var oModel = new sap.ui.model.odata.ODataModel("../../services/poWorklistJoin.xsodata/", false);
 	  this.setModel(oModel);
 	
 	  var oTabStrip = new sap.ui.commons.TabStrip("tabStripDetail");
@@ -98,7 +98,7 @@ function buildGeneralTab(oController,oTabStrip){
 
 function buildItemsTab(oController,oTabStrip){
 	
-	var oModelItem = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/poWorklistJoin.xsodata/", false);
+	var oModelItem = new sap.ui.model.odata.ODataModel("../../services/poWorklistJoin.xsodata/", false);
     var oControl;
     oTable = new sap.ui.table.Table("poItemTable",{tableId: "poItems",
              visibleRowCount: 6,

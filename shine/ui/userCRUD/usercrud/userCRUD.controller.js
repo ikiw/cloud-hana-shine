@@ -100,7 +100,7 @@ sap.ui.controller("usercrud.userCRUD", {
 		
 		//create an array of batch changes and save
 		var oModel = sap.ui.getCore().byId("userTbl").getModel();
-		var batchModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/userBeforeExit.xsodata/", true);
+		var batchModel = new sap.ui.model.odata.ODataModel("../../services/userBeforeExit.xsodata/", true);
 		var batchChanges = [];  
 		for ( var k = 0; k < newUserList.length; k++ ) {
 			batchChanges.push( batchModel.createBatchOperation("/Users", "POST", newUserList[k]) );

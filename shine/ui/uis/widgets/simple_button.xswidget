@@ -1,6 +1,0 @@
-{
-"name" : "Simple Button",
-"specXMLURL" : "/{{PACKAGE_NAME}}/ui/uis/xml/simple_button.xml" ,
-"description": "",
-"icon" : ""
-}

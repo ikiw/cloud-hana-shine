@@ -45,13 +45,13 @@ role {{PACKAGE_NAME}}.roles::User
 	sql object "{{PACKAGE_NAME}}.data::purchaseOrderHeaderExternal" : SELECT;
 	
 	// sequences
-	sql object "{{PACKAGE_NAME}}.data::addressSeqId" : ALTER, SELECT;
-	sql object "{{PACKAGE_NAME}}.data::employeeSeqId" : ALTER, SELECT;
-    sql object "{{PACKAGE_NAME}}.data::partnerSeqId" : ALTER, SELECT;
-    sql object "{{PACKAGE_NAME}}.data::purchaseOrderSeqId" : ALTER, SELECT;
-    sql object "{{PACKAGE_NAME}}.data::salesOrderId" : ALTER, SELECT;
-    sql object "{{PACKAGE_NAME}}.data::sessionId" : ALTER, SELECT;
-    sql object "{{PACKAGE_NAME}}.data::textSeqId" : ALTER, SELECT;
+	sql object "{{PACKAGE_NAME}}.data::addressSeqId" : ALTER, SELECT, DROP;
+	sql object "{{PACKAGE_NAME}}.data::employeeSeqId" : ALTER, SELECT, DROP;
+    sql object "{{PACKAGE_NAME}}.data::partnerSeqId" : ALTER, SELECT, DROP;
+    sql object "{{PACKAGE_NAME}}.data::purchaseOrderSeqId" : ALTER, SELECT, DROP;
+    sql object "{{PACKAGE_NAME}}.data::salesOrderId" : ALTER, SELECT, DROP;
+    sql object "{{PACKAGE_NAME}}.data::sessionId" : ALTER, SELECT, DROP;
+    sql object "{{PACKAGE_NAME}}.data::textSeqId" : ALTER, SELECT, DROP;
 
     // procedures
 //--//sql object "{{PACKAGE_NAME}}.models/CV_SALESORDER_RANKING_SQL/proc" : EXECUTE;

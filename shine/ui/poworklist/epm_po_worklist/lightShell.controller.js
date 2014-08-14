@@ -32,7 +32,7 @@ sap.ui.controller("epm_po_worklist.lightShell", {
 //   }
 	 
 	getSessionInfo: function(oController,oAppHeader){
-		var aUrl = '/{{PACKAGE_NAME}}/services/poWorklistQuery.xsjs?cmd=getSessionInfo';		
+		var aUrl = '../../services/poWorklistQuery.xsjs?cmd=getSessionInfo';		
 	    jQuery.ajax({
 	       url: aUrl,
 	       method: 'GET',

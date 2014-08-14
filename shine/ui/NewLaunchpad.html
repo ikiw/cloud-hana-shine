@@ -38,12 +38,7 @@
 		.ucClass{
 			background-image: url('./thumbnails/userCRUD.png');
 		}
-		.uisbClass{
-			background-image: url('./thumbnails/uis1.png');
-		}
-		.uisgClass{
-			background-image: url('./thumbnails/uis.png');
-		}						
+			
 		</style>
 		
  		<script src="/sap/ui5/1/resources/sap-ui-core.js"
@@ -63,7 +58,7 @@
 					//type : "Monitor",
 					removable : false,
 					press : function(oEvent) {
-						window.location = '/{{PACKAGE_NAME}}/admin/admin.html';
+						window.location = '../admin/admin.html';
 					},
 				    info : "Data Generator",
 				    infoState : "None"
@@ -81,7 +76,7 @@
 					infoState : "None",
 					removable : false,
 					press : function(oEvent) {
-						window.location = '/{{PACKAGE_NAME}}/ui/poworklist/poWorklist.html';
+						window.location = 'poworklist/poWorklist.html';
 					}
 				});
 				poTile.addStyleClass('templateTileClass');
@@ -97,7 +92,7 @@
 					infoState : "None",
 					removable : false,
 					press : function(oEvent) {
-							window.location = '/{{PACKAGE_NAME}}/ui/salesDashboard/index.html';					
+							window.location = 'salesDashboard/index.html';					
 					}
 				});
 				soTile.addStyleClass('templateTileClass');
@@ -113,7 +108,7 @@
 					infoState : "None",
 					removable : false,
 					press : function(oEvent) {
-							window.location = '/{{PACKAGE_NAME}}/ui/salesDashboard/soWorklist.html';					
+							window.location = 'salesDashboard/soWorklist.html';					
 					}
 				});
 				sowTile.addStyleClass('templateTileClass');
@@ -128,45 +123,14 @@
 					infoState : "None",
 					removable : false,
 					press : function(oEvent) {
-							window.location = '/{{PACKAGE_NAME}}/ui/userCRUD/index.html';					
+							window.location = 'userCRUD/index.html';					
 					}
 				});
 				userTile.addStyleClass('templateTileClass');
 				userTile.addStyleClass('ucClass');
 
-				var uisBlueTile = new sap.m.StandardTile({
-					icon : "sap-icon://widgets",
-					//number : "1",
-					//numberUnit : "NEW",
-					//title : 'HANA UI Integration Services',
-					info : "HANA UI Integration Services - Blue Crystal Theme",
-					infoState : "None",
-					removable : false,
-					press : function(oEvent) {
-						window.location = '/i053959sapdev/uis/clients/ushell-app/shells/hana/shell.html#appsite-display~ctx?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample';						
-					}
-				});
-				uisBlueTile.addStyleClass('templateTileClass');
-				uisBlueTile.addStyleClass('uisbClass');
-				
-				var uisGoldTile = new sap.m.StandardTile({
-					icon : "sap-icon://widgets",
-					//number : "1",
-					//numberUnit : "NEW",
-					//title : 'HANA UI Integration Services',
-					info : "HANA UI Integration Services - Gold Reflection Theme",
-					infoState : "None",
-					removable : false,
-					press : function(oEvent) {
-						window.location = '/i053959sapdev/uis/clients/desktop/applications/uis/runtime.html?siteID=sap%7Chana%7Cdemocontent%7Cepm%7Cui%7Cuis%7Csite%7CUISExample#context/eyJjdHhSb3V0ZUlkIjoiMTM4MzA1MTUzODI3MiIsImNvbnRleHRNYXAiOnt9fQ==';						
-					}
-				});		
-				uisGoldTile.addStyleClass('templateTileClass');
-				uisGoldTile.addStyleClass('uisgClass');		
-				
 		var items = [ adminTile, poTile, soTile, sowTile,
-			          userTile, uisBlueTile, uisGoldTile,
-			          ];
+			          userTile,  ];
 		
 
 		// create tile container

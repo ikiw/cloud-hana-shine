@@ -1,5 +1,0 @@
-{
-	"exposed": true,
-	"authentication": [{ "method": "LogonTicket" },{ "method" : "Basic" }], 
-	"cache_control" : "must-revalidate"                
-}

@@ -37,7 +37,7 @@ sap.ui.controller("epm_po_worklist.Table", {
 		 //Excel Download
 		 if (oEvent.getSource().getId()=="btnExcel"){
             // xsjs will handle the content type and download will trigger automatically
-			window.open("/{{PACKAGE_NAME}}/services/poWorklistQuery.xsjs?cmd=Excel");
+			window.open("../../services/poWorklistQuery.xsjs?cmd=Excel");
 			return;
 		 }
 		 
@@ -101,7 +101,7 @@ sap.ui.controller("epm_po_worklist.Table", {
 	 //Delete Confirmation Dialog Results
 	 deleteConfirm: function(bResult,oController,poId){
 		 if(bResult){ 
-			 var aUrl = '/{{PACKAGE_NAME}}/services/poWorklistUpdate.xsjs?cmd=delete'+'&PurchaseOrderId='+escape(poId);
+			 var aUrl = '../../services/poWorklistUpdate.xsjs?cmd=delete'+'&PurchaseOrderId='+escape(poId);
 			 jQuery.ajax({
 			       url: aUrl,
 			       method: 'GET',
@@ -115,7 +115,7 @@ sap.ui.controller("epm_po_worklist.Table", {
 	 //Approve Confirmation Dialog Results
 	 approvalConfirm: function(bResult,oController,poId,action){
 		 if(bResult){ 
-			 var aUrl = '/{{PACKAGE_NAME}}/services/poWorklistUpdate.xsjs?cmd=approval'+'&PurchaseOrderId='+escape(poId)+'&Action='+escape(action);
+			 var aUrl = '../../services/poWorklistUpdate.xsjs?cmd=approval'+'&PurchaseOrderId='+escape(poId)+'&Action='+escape(action);
 			 jQuery.ajax({
 			       url: aUrl,
 			       method: 'GET',

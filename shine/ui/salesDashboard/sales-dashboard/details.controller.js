@@ -56,7 +56,7 @@ sap.ui.controller("sales-dashboard.details", {
 	 //Delete Confirmation Dialog Results
 	 deleteConfirm: function(bResult,oController,soId){
 		 if(bResult){ 
-			 var aUrl = "/{{PACKAGE_NAME}}/services/soDelete.xsodata/so_details('" + soId + "')";
+			 var aUrl = "../../services/soDelete.xsodata/so_details('" + soId + "')";
 			 jQuery.ajax({
 			       url: aUrl,
 			       type: 'DELETE',
@@ -132,7 +132,7 @@ sap.ui.controller("sales-dashboard.details", {
                       
                           $.ajax({
                                  type: "POST",
-                                 url: "/{{PACKAGE_NAME}}/services/soCreateMultiple.xsjs",
+                                 url: "../../services/soCreateMultiple.xsjs",
                                  contentType: "application/json",
                                  data: JSON.stringify(payload),
                                  dataType: "json",

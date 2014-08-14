@@ -6,7 +6,7 @@ sap.ui.jsview("epm_po_worklist.Table", {
 
       createContent : function(oController) {
    	  
-    	 var oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/poWorklist.xsodata/", false);
+    	 var oModel = new sap.ui.model.odata.ODataModel("../../services/poWorklist.xsodata/", false);
     	  
           var oControl;
           oTable = new sap.ui.table.Table("poTable",{tableId: "tableID",

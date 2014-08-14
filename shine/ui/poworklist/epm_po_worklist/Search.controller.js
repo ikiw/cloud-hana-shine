@@ -124,7 +124,7 @@ sap.ui.controller("epm_po_worklist.Search", {
 	loadFilter: function(oEvent)
 	{
 	    gSearchParam = oEvent.getParameter("value");
-	    var aUrl = '/{{PACKAGE_NAME}}/services/poWorklistQuery.xsjs?cmd=filter'+'&query='+escape(oEvent.getParameter("value"))+'&page=1&start=0&limit=25';
+	    var aUrl = '../../services/poWorklistQuery.xsjs?cmd=filter'+'&query='+escape(oEvent.getParameter("value"))+'&page=1&start=0&limit=25';
 	    jQuery.ajax({
 	       url: aUrl,
 	       method: 'GET',

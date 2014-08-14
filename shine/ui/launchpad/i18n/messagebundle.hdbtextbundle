@@ -39,13 +39,13 @@ TILE_DB_VIEWS_US=<div>EPM.User.Details</div>
 TILE_DB_VIEWS_UIS_BLUE=<ul><li>EPM.Purchase.Header</li><li>EPM.Purchase.Item</li><li>AN_PURCHASE_Overview.analyticview</li><ul>
 TILE_DB_VIEWS_UIS_GOLD=<ul><li>EPM.Purchase.Header</li><li>EPM.Purchase.Item</li><li>AN_PURCHASE_Overview.analyticview</li><ul>
 
-TILE_UI_FOLDER_DG=/{{PACKAGE_NAME}}/admin/ui/
-TILE_UI_FOLDER_PO=/{{PACKAGE_NAME}}/ui/poworklist/
-TILE_UI_FOLDER_SO=/{{PACKAGE_NAME}}/ui/salesDashboard/
-TILE_UI_FOLDER_SD=/{{PACKAGE_NAME}}/ui/salesDashboard/
-TILE_UI_FOLDER_US=/{{PACKAGE_NAME}}/ui/userCRUD/
-TILE_UI_FOLDER_UIS_BLUE=/{{PACKAGE_NAME}}/ui/uis/site/UISExample/
-TILE_UI_FOLDER_UIS_GOLD=/{{PACKAGE_NAME}}/ui/uis/site/UISExample/
+TILE_UI_FOLDER_DG=../admin/ui/
+TILE_UI_FOLDER_PO=ui/poworklist/
+TILE_UI_FOLDER_SO=ui/salesDashboard/
+TILE_UI_FOLDER_SD=ui/salesDashboard/
+TILE_UI_FOLDER_US=ui/userCRUD/
+TILE_UI_FOLDER_UIS_BLUE=ui/uis/site/UISExample/
+TILE_UI_FOLDER_UIS_GOLD=ui/uis/site/UISExample/
 
 TILE_PERMS_DG=User should have Admin.Hdbrole to access this Application, Time Data has to be generated.
 TILE_PERMS_PO=User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.

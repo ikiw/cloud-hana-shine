@@ -130,7 +130,7 @@ sap.ui.controller("sales-dashboard.Search", {
 	    	sap.ui.controller("sales-dashboard.Search").emptyFilter();
 	    }
 	    else{
-		    var aUrl = '/{{PACKAGE_NAME}}/services/soWorklistQuery.xsjs?cmd=filter'+'&query='+escape(oEvent.getParameter("value"))+'&page=1&start=0&limit=25';
+		    var aUrl = '../../services/soWorklistQuery.xsjs?cmd=filter'+'&query='+escape(oEvent.getParameter("value"))+'&page=1&start=0&limit=25';
 		    jQuery.ajax({
 		       url: aUrl,
 		       method: 'GET',

@@ -16,7 +16,7 @@ sap.ui.jsview("usercrud.userCRUD", {
 		var view = this;
   	  
   		var oLayout = new sap.ui.commons.layout.MatrixLayout();
-  		this.oModel = new sap.ui.model.odata.ODataModel("/{{PACKAGE_NAME}}/services/user.xsodata/", true);
+  		this.oModel = new sap.ui.model.odata.ODataModel("../../services/user.xsodata/", true);
   		  	  
   		var updatePanel = new sap.ui.commons.Panel("updPanel").setText('New User Record Details');
   		var layoutNew = new sap.ui.commons.layout.MatrixLayout({width:"auto"}); 
